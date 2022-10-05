@@ -29,11 +29,6 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     //statless는 정적이기 때문에 동일한 객체를 만들지 않기 위해서 const를 붙인다.
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print("클릭됌");
-        },
-      ),
       body: Column(
         children: [
           DayComponent(),
@@ -63,13 +58,29 @@ class _DayComponentState extends State<DayComponent> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
-      height: 200,
-      child: Text(
-        "${upData}",
-        style: TextStyle(fontSize: 50),
-      ),
+    print("DayComponent실행됨");
+    return Row(
+      children: [
+        ElevatedButton(
+            onPressed: () {
+              //upData = "해";//버튼을 누르면 값은 바뀌지만 그림이 다시그려지지 않는다.
+              // build가 되지 않아서이다.
+              setState(() {
+                // setState로 상태를 변경할 수 있다.
+                upData = "해";
+              });
+              print(upData);
+            },
+            child: Text("클릭")),
+        Container(
+          color: Colors.yellow,
+          height: 200,
+          child: Text(
+            "${upData}",
+            style: TextStyle(fontSize: 50),
+          ),
+        ),
+      ],
     );
   }
 }
