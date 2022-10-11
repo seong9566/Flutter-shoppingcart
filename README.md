@@ -3,14 +3,13 @@
 A new Flutter project.
 
 ## Getting Started
+Icon을 버튼화 시키는 방법 : Inkwell, IconButton 두가지 방법.
+Inkwell은 행위를 onTap
+IconButton은 행위를 InPressed
 
-This project is a starting point for a Flutter application.
+앱의 오른쪽 debug 없애는 방법 : debugShowCheckedModeBanner: false 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+여백을 줄 때 sizedBox를 선호 하는 이유 
+그냥 단지 Padding값을 선언하면 재활용 할 때 Padding값이 
+없어서 재활용이 불가능할 수 있다.
+그래서 sizedBox를 준다. 
