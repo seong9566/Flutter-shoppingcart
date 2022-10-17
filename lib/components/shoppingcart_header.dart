@@ -1,5 +1,7 @@
 //파일명은 _ 를 쓰지만 클래스명은 파스칼을 쓴다
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shoppingcart/constants.dart';
 
 //<******************중요한 개념********************>
 // setstate란? 상태변수를 제어 하는 함수이다.
@@ -61,26 +63,34 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buildHeaderSelectorButton(
-          0,
-        ),
-        _buildHeaderSelectorButton(1),
-        _buildHeaderSelectorButton(2),
-        _buildHeaderSelectorButton(3),
+        _buildHeaderSelectorButton(0, Icons.directions_bike),
+        _buildHeaderSelectorButton(1, Icons.motorcycle),
+        _buildHeaderSelectorButton(2, CupertinoIcons.car_detailed),
+        _buildHeaderSelectorButton(3, CupertinoIcons.airplane),
       ],
     );
   }
 
-  IconButton _buildHeaderSelectorButton(int id) {
-    return IconButton(
+// 지역변수를 쓸때 m을 자주 쓴다. > 그 이유는 라이브러리를 쓰는 것들이 있기 때문이다
+  Widget _buildHeaderSelectorButton(int id, IconData mIcon) {
+    return Container(
+      width: 70,
+      height: 70,
+      decoration: BoxDecoration(
+        //color: kSecondaryColor,
+        color: id == selectedId
+            ? kAccentColor
+            : kSecondaryColor, //이름을 앞에 k준 이유 : 색상을 const파일에 넣어주면 k만 넣어주면 바로 찾아진다.
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: IconButton(
+        icon: Icon(mIcon, color: Colors.black),
         onPressed: () {
           setState(() {
             selectedId = id;
           });
         },
-        icon: Icon(
-          Icons.directions_bike,
-          color: Colors.black,
-        ));
+      ),
+    );
   }
 }
